@@ -253,6 +253,248 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/LU_SGS/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Boping Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Boping Dracula">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/19/LU_SGS/" itemprop="url">LUSGS scheme</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T19:02:18+08:00">
+                2018-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Aerodynamics/" itemprop="url" rel="index">
+                    <span itemprop="name">Aerodynamics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script type="math/tex; mode=display">
+\frac{\partial}{\partial t} \int _{\Omega} Q d\Omega + \int _{\Omega}\vec \nabla \cdot \vec F(Q) d\Omega - \int _{\Omega} \vec \nabla \cdot \vec F(Q, \nabla Q)d\Omega + \int _\Omega S d\Omega= 0</script><script type="math/tex; mode=display">
+\frac{\partial \bar Q}{\partial t} + \underbrace{\frac{\int_{\partial \Omega} \vec F(Q) \cdot \vec n d S}{V_{volume}} - \frac{\int _{\partial \Omega} \vec F(Q, \nabla Q) \cdot \vec n dS }{V_{volume}} + S}_{RHS} = 0  \tag 1</script><p>隐式格式:</p>
+<script type="math/tex; mode=display">
+\frac{Q^{n+1} - Q^{n}}{\Delta t} + RHS ^{n+1} = 0</script><script type="math/tex; mode=display">
+\frac{Q^{n+1} - Q^n}{\Delta t} + RHS^{n+1}-RHS^{n} = -RHS^{n}</script><p>Let $\Delta Q^n = Q^{n+1}-Q^{n}$</p>
+<script type="math/tex; mode=display">
+\frac{\Delta Q^{n}}{\Delta t} + \frac{\partial RHS^n}{\partial Q^{n}} \Delta Q^n = - RHS^n</script><script type="math/tex; mode=display">
+\underbrace{\Delta Q^n}_{x}\underbrace{(\frac{1}{\Delta t} +\frac{\partial RHS^n}{\partial Q^n})}_{A}=\underbrace{-RHS^n}_{b} \tag 2</script><p>矩阵A可以分解成三个矩阵之和，分别是对角矩阵$D$,严格上三角矩阵$\overline U$, 和严格下三角矩阵$\overline L$,即：</p>
+<script type="math/tex; mode=display">
+A=D+\overline U + \overline L</script><script type="math/tex; mode=display">
+D+\overline U + \overline L = D(I+D^{-1} \overline U+D^{-1}\overline L)
+=D(I+D^{-1}\overline U)(I+D^{-1}\overline L)  \\
+=(D+\overline L)D^{-1}(D+\overline U)</script><script type="math/tex; mode=display">
+\begin{cases}
+L = D+\overline L \\
+U = D+\overline U \\
+D^{-1} = D^{-1}
+\end{cases}</script><p>故(2)式可以写为：</p>
+<script type="math/tex; mode=display">
+L D^{-1} U\Delta Q^{n}=-RHS^{n}  \tag 3</script><ul>
+<li>第一步：$L$扫描$\to LD^{-1}\Delta Q^L=-RHS$</li>
+<li>第二步：$U$扫描$\to U\Delta Q = \Delta Q^L$</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\frac{\partial RHS_{0,0}}{\partial Q_{0,0}} & ... & ... & ... & ... & ... & ... & ... & ...\\
+\vdots & \frac{\partial RHS_{0,1}}{\partial Q_{0,1}} & ... & ... & ... & ... & ... & ... & ...\\
+\vdots & \vdots & \ddots & ... & ... & ... & ... & ... & ...\\
+\vdots & \vdots & \vdots & \frac{\partial RHS_{j-1,i}}{\partial Q_{j-1,i}} & ... & ... & ... & ... & ...\\
+\vdots & \frac{\partial RHS_{j,i}}{\partial Q_{j-1,i}} & 0 & \frac{\partial RHS_{j,i}}{\partial Q_{j,i-1}} & \frac{\partial RHS_{j,i}}{\partial Q_{j,i}} & \frac{\partial RHS_{j,i}}{\partial Q_{j,i+1}} & 0 & \frac{\partial RHS_{j,i}}{\partial Q_{j+1,i}} & ... \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & ... & ... & ...\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & ... & ...\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & ...\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
+\end{bmatrix}</script><script type="math/tex; mode=display">
+Q=
+\begin{bmatrix}
+Q_1 \\
+Q_2 \\
+Q_3 \\
+Q_4 \\
+Q_5
+\end{bmatrix}
+=
+\begin{bmatrix}
+\rho \\ 
+\rho u \\
+\rho v \\
+\rho e \\
+\rho \nu 
+\end{bmatrix}</script><script type="math/tex; mode=display">
+\begin{bmatrix}
+\frac{\partial RHS_1}{\partial Q_1} &\frac{\partial RHS_1}{\partial Q_2} & \frac{\partial RHS_1}{\partial Q_3} & \frac{\partial RHS_1}{\partial Q_4} & \frac{\partial RHS_1}{\partial Q_5} \\
+\frac{\partial RHS_2}{\partial Q_1} &\frac{\partial RHS_2}{\partial Q_2} & \frac{\partial RHS_2}{\partial Q_3} & \frac{\partial RHS_2}{\partial Q_4} & \frac{\partial RHS_2}{\partial Q_5} \\
+\frac{\partial RHS_3}{\partial Q_1} &\frac{\partial RHS_3}{\partial Q_2} & \frac{\partial RHS_3}{\partial Q_3} & \frac{\partial RHS_3}{\partial Q_4} & \frac{\partial RHS_3}{\partial Q_5} \\
+\frac{\partial RHS_4}{\partial Q_1} &\frac{\partial RHS_4}{\partial Q_2} & \frac{\partial RHS_4}{\partial Q_3} & \frac{\partial RHS_4}{\partial Q_4} & \frac{\partial RHS_4}{\partial Q_5} \\
+\frac{\partial RHS_5}{\partial Q_1} &\frac{\partial RHS_5}{\partial Q_2} & \frac{\partial RHS_5}{\partial Q_3} & \frac{\partial RHS_5}{\partial Q_4} & \frac{\partial RHS_5}{\partial Q_5} \\
+\end{bmatrix}</script><h3 id="1-无粘项的处理"><a href="#1-无粘项的处理" class="headerlink" title="1. 无粘项的处理"></a>1. 无粘项的处理</h3><p>无粘项采用LF格式</p>
+<script type="math/tex; mode=display">
+\vec F_{j, i+1/2}\cdot \vec n_{j, i+1/2} =\frac{1}{2}(F(Q_{j,i})+F(Q_{j,i+1}))-\frac{|U_{j,i+1/2}+c|}{2}(Q_{j,i+1}-Q_{j,i})</script><p>上式中：$U$为逆变速度, $Q$ 为解。</p>
+<p>某一编号为$(j, i)$的网格上的$RHS$表达式如下：</p>
+<script type="math/tex; mode=display">
+RHS_{j,i} = \frac{1}{Volume}(\vec F_{j,i+1/2}\cdot \vec n_{j,i+1/2}-\vec F_{j,i-1/2}\cdot \vec n_{j,i-1/2}+\vec F_{j+1/2,i}\cdot \vec n_{j+1/2,i}-\vec F_{j-1/2,i}\cdot \vec n_{j-1/2,i})</script><script type="math/tex; mode=display">
+RHS_{j,i}= \frac{1}{2*Volume}\\ (F(Q_{j,i})+F(Q_{j,i+1})-|U_{j,i+1/2}+c|(Q_{j,i+1}-Q_{j,i}) \\
++F(Q_{j,i})+F(Q_{j+1,i})-|U_{j+1/2,i}+c|(Q_{j+1,i}-Q_{j,i}) \\
+-(F(Q_{j,i-1})+F(Q_{j,i}))+|U_{j,i-1/2}+c|(Q_{j,i}-Q_{j,i-1}) \\
+-(F(Q_{j-1,i})+F(Q_{j,i}))+|U_{j-1/2,i}+c|(Q_{j,i}-Q_{j-1,i}))</script><p>编号$(j, i)$网格上的$RHS$与该网格上的解和紧邻的上下左右上的解有关.<br>上：</p>
+<script type="math/tex; mode=display">
+\frac{\partial RHS_{j,i}}{\partial Q_{j+1,i}}=\frac{1}{2*Volume} (\frac{\partial F}{\partial Q_{j+1,i}}-|U_{j+1/2,i}+c|)</script><p>下：</p>
+<script type="math/tex; mode=display">
+\frac{\partial RHS_{j,i}}{\partial Q_{j-1,i}}=\frac{1}{2*Volume} (-\frac{\partial F}{\partial Q_{j-1,i}}-|U_{j-1/2,i}+c|)</script><p>右：</p>
+<script type="math/tex; mode=display">
+\frac{\partial RHS_{j,i}}{\partial Q_{j,i+1}}=\frac{1}{2*Volume} (\frac{\partial F}{\partial Q_{j,i+1}}-|U_{j,i+1/2}+c|)</script><p>左：</p>
+<script type="math/tex; mode=display">
+\frac{\partial RHS_{j,i}}{\partial Q_{j,i-1}}=\frac{1}{2*Volume} (-\frac{\partial F}{\partial Q_{j,i-1}}-|U_{j,i-1/2}+c|)</script><p>中：</p>
+<script type="math/tex; mode=display">
+\frac{\partial RHS_{j,i}}{\partial Q_{j,i}}= \frac{1}{2*Volume} (\sum |U+c|_{j,i})</script><p>第一步：$LD^{-1}$扫描 $\to LD^{-1}\Delta Q^{L}_{j,i}=-RHS_{j,i}$ 从上往下</p>
+<script type="math/tex; mode=display">
+\Delta Q_{j,i}^L = \frac{-RHS_{j,i}+\frac{1}{2V}(\frac{\partial F}{\partial Q_{j-1,i}}+|U_{j-1,i}+c|)\Delta Q_{j-1,i}+\frac{1}{2V}(\frac{\partial F}{\partial Q_{j,i-1}}+|U_{j,i-1}+c|)\Delta Q_{j,i-1}}{\frac{1}{\Delta t}+\frac{1}{2V}\sum |U+c|_{j,i}} \\
+= \frac{-RHS_{j,i}+\frac{1}{2V}(F_{j,i}-F_{j-1,i}+|U_{j-1,i}+c|\Delta Q_{j-1,i})+\frac{1}{2V}(F_{j,i}-F_{j,i-1}+|U_{j,i-1}+c|\Delta Q_{j,i-1})}{\frac{1}{\Delta t}+\frac{1}{2V}\sum |U+c|_{j,i}}</script><p>第二步：$U$扫描 $\to U \Delta Q_{j,i}=\Delta Q_{j,i}^L$ 从下往上</p>
+<h3 id="2-粘性项的处理。"><a href="#2-粘性项的处理。" class="headerlink" title="2. 粘性项的处理。"></a>2. 粘性项的处理。</h3><script type="math/tex; mode=display">
+RHS_{j,i} =\frac{1}{Volume}\int_{\partial \Omega} \vec F(Q,\nabla Q)\cdot \vec n dS</script><script type="math/tex; mode=display">
+RHS_{j,i} = \frac{1}{Volume}(\vec F(Q_{j,i+1/2},\nabla Q_{j,i+1/2})\cdot \vec n_{j,i+1/2} -\vec F(Q_{j,i-1/2},\nabla Q_{j,i-1/2})\cdot \vec n_{j,i-1/2} \\
++\vec F(Q_{j+1/2,i},\nabla Q_{j+1/2,i})\cdot \vec n_{j+1/2,i} -\vec F(Q_{j-1/2,i},\nabla Q_{j-1/2,i})\cdot \vec n_{j-1/2,i})</script><p>粘性项采用中心格式：</p>
+<script type="math/tex; mode=display">
+\vec F(Q_{j,i+1/2},\nabla Q_{j,i+1/2})\cdot \vec n_{j,i+1/2} = \vec F(\frac{Q_{j,i}+Q_{j,i+1}}{2}, Q_{j,i+1}-Q_{j,i}) \cdot \vec n_{j,i+1/2}</script><script type="math/tex; mode=display">
+RHS_{j,i} = \frac{1}{Volume}\\
+(\vec F(\frac{Q_{j,i}+Q_{j,i+1}}{2}, Q_{j,i+1}-Q_{j,i}) \cdot \vec n_{j,i+1/2}\\
+-\vec F(\frac{Q_{j,i-1}+Q_{j,i}}{2}, Q_{j,i}-Q_{j,i-1}) \cdot \vec n_{j,i-1/2}\\
++\vec F(\frac{Q_{j,i}+Q_{j+1,i}}{2}, Q_{j+1,i}-Q_{j,i}) \cdot \vec n_{j+1/2,i}\\
+-\vec F(\frac{Q_{j-1,i}+Q_{j,i}}{2}, Q_{j,i}-Q_{j-1,i}) \cdot \vec n_{j-1/2,i})</script><p>上：</p>
+<script type="math/tex; mode=display">
+\frac{RHS_{j,i}}{\partial Q_{j+1,i}}=\frac{1}{Volume}(\frac{\partial F_{j+1/2,i}}{\partial Q_{j+1,i}} )</script><p>下：</p>
+<script type="math/tex; mode=display">
+\frac{RHS_{j,i}}{\partial Q_{j-1,i}}=\frac{1}{Volume}(- \frac{\partial F_{j-1/2,i}}{\partial Q_{j-1,i}} )</script><p>右：</p>
+<script type="math/tex; mode=display">
+\frac{RHS_{j,i}}{\partial Q_{j,i+1}}=\frac{1}{Volume}( \frac{\partial F_{j,i+1/2}}{\partial Q_{j,i+1}} )</script><p>左：</p>
+<script type="math/tex; mode=display">
+\frac{RHS_{j,i}}{\partial Q_{j,i-1}}=\frac{1}{Volume}(- \frac{\partial F_{j,i-1/2}}{\partial Q_{j,i-1}} )</script><p>中：</p>
+<script type="math/tex; mode=display">
+\frac{RHS_{j,i}}{\partial Q_{j,i}}=\frac{1}{Volume}(\frac{\partial F_{j,i+1/2}}{\partial Q_{j,i+1}} - \frac{\partial F_{j,i-1/2}}{\partial Q_{j,i-1}} + \frac{\partial F_{j+1/2,i}}{\partial Q_{j+1,i}} - \frac{\partial F_{j-1/2,i}}{\partial Q_{j-1,i}})</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/Centos 7.4  安装openCV 3.3.1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -737,7 +979,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
