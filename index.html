@@ -82,13 +82,13 @@
 <meta name="description" content="Alucard&apos;s father">
 <meta name="keywords" content="Python C++">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Boping Home">
+<meta property="og:title" content="Boping Dracula">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Boping Home">
+<meta property="og:site_name" content="Boping Dracula">
 <meta property="og:description" content="Alucard&apos;s father">
 <meta property="og:locale" content="Chinese">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Boping Home">
+<meta name="twitter:title" content="Boping Dracula">
 <meta name="twitter:description" content="Alucard&apos;s father">
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>Boping Home</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Boping Dracula</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Boping Home</span>
+        <span class="site-title">Boping Dracula</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -187,6 +187,26 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
           </a>
         </li>
       
@@ -233,6 +253,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/Centos 7.4  安装openCV 3.3.1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Boping Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Boping Dracula">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/19/Centos 7.4  安装openCV 3.3.1/" itemprop="url">Centos 7.4 安装openCV3.3.1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T18:59:25+08:00">
+                2018-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tips/" itemprop="url" rel="index">
+                    <span itemprop="name">Tips</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>查看Centos版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>安装依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum groupinstall &quot;Development Tools&quot; -y</span><br><span class="line">sudo yum install gcc cmake gtk2-devel numpy pkgconfig -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载opencv3.3.1.zip 文件到 ～/Downloads/文件夹:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GitHub：https://github.com/opencv/opencv/archive/3.3.1.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压opencv3.3.1.zip文件到当前文件夹（~/Downloads/）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Downloads</span><br><span class="line">unzip opencv3.3.1.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译源文件和安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Downloads/opencv-3.3.1</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">sudo cmake -D CMAKE_BUILD_TYPE=DEBUG -D CMAKE_INSTALL_PREFIX=/usr/local ..</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果cmake阶段一直停在下载IPPICV那里，则按Ctrl C取消<br>在这个情况下，首先手动下载ippicv_2017u3_lnx_intel64_general_20170822.tgz这个文件到~/Downloads/文件夹：<br>GitHub：<a href="https://github.com/opencv/opencv_3rdparty/tree/ippicv/master_20170822" target="_blank" rel="noopener">https://github.com/opencv/opencv_3rdparty/tree/ippicv/master_20170822</a><br>百度网盘：<a href="https://pan.baidu.com/s/1o8ywdZW" target="_blank" rel="noopener">https://pan.baidu.com/s/1o8ywdZW</a><br>然后进入~/Downloads/opencv3.3.1文件夹创建一个.cache文件夹，并拷贝相应的文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Downloads/opencv3.3.1</span><br><span class="line">ipp_file=ippicv_2017u3_lnx_intel64_general_20170822.tgz &amp;&amp;</span><br><span class="line">ipp_hash=$(md5sum ~/Downloads/$ipp_file | cut -d&quot; &quot; -f1) &amp;&amp;</span><br><span class="line">ipp_dir=.cache/ippicv &amp;&amp;</span><br><span class="line">mkdir -p $&#123;ipp_dir&#125; &amp;&amp;</span><br><span class="line">cp ~/Downloads/$ipp_file $ipp_dir/$ipp_hash-$ipp_file</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以使CMake脚本使用自己下载好的文件，而不是在运行过程中去下载；<br>然后重新运行编译命令和安装命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Downloads/opencv3.3.1/build　　　　　　</span><br><span class="line">sudo cmake -D CMAKE_BUILD_TYPE=DEBUG -D CMAKE_INSTALL_PREFIX=/usr/local ..</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>配置环境变量：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>最好将这个命令写入Shell的配置文件中，不然每次登入都需要执行一次<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &apos;/usr/local/lib&apos; &gt;&gt; /etc/ld.so.conf.d/opencv.conf</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>运行一个测试例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*test.cpp*/</span><br><span class="line">#include &lt;opencv2/core/core.hpp&gt;  </span><br><span class="line">#include &lt;opencv2/highgui/highgui.hpp&gt;  </span><br><span class="line">#include &lt;opencv2/imgproc/imgproc.hpp&gt;  </span><br><span class="line"></span><br><span class="line">int main(int argc,char *argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">    cv::Mat image;  </span><br><span class="line">    image=cv::imread(&quot;1.png&quot;);    </span><br><span class="line">    cv::namedWindow(&quot;1.png&quot;);  </span><br><span class="line">    cv::imshow(&quot;1.png&quot;,image);  </span><br><span class="line">　　cv::waitKey();  </span><br><span class="line">　　return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -g test.cpp `pkg-config --cflags --libs opencv` </span><br><span class="line">./a.out</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/SA_turbulence_model/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -242,7 +430,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Boping Home">
+      <meta itemprop="name" content="Boping Dracula">
     </span>
 
     
@@ -275,6 +463,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Aerodynamics/" itemprop="url" rel="index">
+                    <span itemprop="name">Aerodynamics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -304,8 +514,7 @@
       
         
           
-            <p>Tags:Turbulence</p>
-<h2 id="SA-turbulence-model"><a href="#SA-turbulence-model" class="headerlink" title="SA_turbulence_model"></a>SA_turbulence_model</h2><p>将可压SA模型方程，与NS方程耦合处理计算。其中只比NS方程多出了右端源项（production terms),除此之外还有“粘性通量项”</p>
+            <p>将可压SA模型方程，与NS方程耦合处理计算。其中只比NS方程多出了右端源项（production terms),除此之外还有“粘性通量项”</p>
 <hr>
 <script type="math/tex; mode=display">\mu_t=\rho \hat\nu f_{\nu_1}</script><p>上式中：</p>
 <script type="math/tex; mode=display">f_{\nu_1}=\frac{\chi ^3}{\chi ^3 + C_{\nu_1}^3}</script><script type="math/tex; mode=display">\chi \equiv \frac{\hat\nu}{\nu}</script><p>SA一方程如下：</p>
@@ -376,7 +585,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Boping Home">
+      <meta itemprop="name" content="Boping Dracula">
     </span>
 
     
@@ -528,12 +737,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
             
 
             
